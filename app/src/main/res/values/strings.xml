@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">FirstAppCompose</string>
     <string name="title_activity_alarm">AlarmActivity</string>
+    <string name="title_activity_calendar">CalendarActivity</string>
+    <string name="title_activity_settings">settingsActivity</string>
+    <string name="title_activity_user_login">userLogin</string>
 </resources>
