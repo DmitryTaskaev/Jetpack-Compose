@@ -1,15 +1,13 @@
 package com.bignerdranch.androin.firstappcompose
 
+import android.content.Intent
 import android.graphics.fonts.FontStyle
 import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.RequiresApi
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -40,25 +38,9 @@ class MainActivity : ComponentActivity() {
                 verticalArrangement = Arrangement.SpaceBetween
             ) {
                 //Header
-                Row(
-                    modifier = Modifier
-                        .fillMaxHeight(0.1f) //0.070
-                        .fillMaxWidth(0.95f),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(
-                        text = "Список дел",
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 25.sp,
-                        color = Color.White
-                    )
-                    Image(
-                        painterResource(R.drawable.avatar),
-                        contentDescription = "",
-                        Modifier.size(55.dp)
-                    )
-                }
+                
+                CreateHeaderButtonProfile(header = "Список дел")
+
                 //Main
                 Column(
                     modifier = Modifier
@@ -72,7 +54,12 @@ class MainActivity : ComponentActivity() {
                     Column(
                         modifier = Modifier
                             .fillMaxWidth(1f)
-                            .height(90.dp),
+                            .height(90.dp).clickable (
+                                onClick = {
+                                    val int = Intent(this@MainActivity, EditTaskActivity::class.java)
+                                    startActivity(int)
+                                }
+                            ),
 
                         ) {
                         Card(
@@ -129,7 +116,12 @@ class MainActivity : ComponentActivity() {
                     Column(
                         modifier = Modifier
                             .fillMaxWidth(1f)
-                            .height(90.dp)
+                            .height(90.dp).clickable (
+                                onClick = {
+                                    val int = Intent(this@MainActivity, EditTaskActivity::class.java)
+                                    startActivity(int)
+                                }
+                            )
 
                     ) {
                         Card(
@@ -186,7 +178,12 @@ class MainActivity : ComponentActivity() {
                     Column(
                         modifier = Modifier
                             .fillMaxWidth(1f)
-                            .height(90.dp)
+                            .height(90.dp).clickable (
+                                onClick = {
+                                    val int = Intent(this@MainActivity, EditTaskActivity::class.java)
+                                    startActivity(int)
+                                }
+                            )
                     ) {
                         Card(
                             shape = RoundedCornerShape(30.dp, 0.dp, 30.dp, 0.dp),
@@ -261,7 +258,10 @@ class MainActivity : ComponentActivity() {
                                 131
                             )
                         ),
-                        onClick = { }) {
+                        onClick = {
+                            val int = Intent(this@MainActivity, AddTaskActivity::class.java)
+                            startActivity(int)
+                        }) {
                         Text(text = "Добавить задачу", color = Color.White, fontSize = 17.sp)
                     }
                     CreateNavigation(value = 1)

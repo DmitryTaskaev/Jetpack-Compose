@@ -1,10 +1,12 @@
 package com.bignerdranch.androin.firstappcompose
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
@@ -44,7 +46,12 @@ class settingsActivity : ComponentActivity() {
                         .fillMaxWidth(0.95f)
                         .height(400.dp)
                 ) {
-                    Row(Modifier.fillMaxWidth(0.95f),horizontalArrangement = Arrangement.SpaceBetween,verticalAlignment = Alignment.CenterVertically) {
+                    Row(Modifier.fillMaxWidth(0.95f).clickable(
+                        onClick = {
+                            val int = Intent(this@settingsActivity, ProfileActivity::class.java)
+                            startActivity(int)
+                        }
+                    ),horizontalArrangement = Arrangement.SpaceBetween,verticalAlignment = Alignment.CenterVertically, ) {
                         Text(text = "Профиль пользователя", color = Color.White, fontSize = 22.sp)
                         Image(painterResource(R.drawable.vector), contentDescription = "", Modifier.size(17.dp))
                     }
@@ -67,79 +74,6 @@ class settingsActivity : ComponentActivity() {
                 //Bottom
 
                 CreateNavigation(value = 4)
-
-                
-                /*
-                Column(
-                    modifier = Modifier
-                        .height(150.dp)
-                        .fillMaxWidth(0.95f),
-                    verticalArrangement = Arrangement.Bottom,
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Row(
-                        modifier = Modifier
-                            .width(288.dp)
-                            .height(72.dp)
-                    ){
-                        Card(
-                            shape = RoundedCornerShape(30.dp,30.dp,0.dp,0.dp),
-                            elevation = 4.dp
-                        ) {
-                            Row(
-                                Modifier
-                                    .background(Color(170, 246, 131))
-                                    .fillMaxWidth(1f)
-                                    .height(72.dp),
-                                verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.SpaceAround
-                            ) {
-                                //List
-                                Column(
-                                    Modifier
-                                        .width(42.dp),
-                                    verticalArrangement = Arrangement.SpaceBetween,
-                                    horizontalAlignment = Alignment.CenterHorizontally
-                                ) {
-                                    Image(painterResource(R.drawable.listred), contentDescription = "", Modifier.size(32.dp))
-                                    Text(text = "List", fontSize = 11.sp, color = Color(238, 96, 85))
-                                }
-                                //Alarm
-                                Column(
-                                    Modifier
-                                        .width(42.dp),
-                                    verticalArrangement = Arrangement.SpaceBetween,
-                                    horizontalAlignment = Alignment.CenterHorizontally
-                                ) {
-                                    Image(painterResource(R.drawable.alarm), contentDescription = "", Modifier.size(32.dp))
-                                    Text(text = "Alarm", fontSize = 11.sp, color = Color(238, 96, 85))
-                                }
-                                //Calendar
-                                Column(
-                                    Modifier
-                                        .width(42.dp),
-                                    verticalArrangement = Arrangement.SpaceBetween,
-                                    horizontalAlignment = Alignment.CenterHorizontally
-                                ) {
-                                    Image(painterResource(R.drawable.calendar), contentDescription = "", Modifier.size(32.dp))
-                                    Text(text = "Calendar", fontSize = 11.sp, color = Color(238, 96, 85))
-                                }
-                                //Settings
-                                Column(
-                                    Modifier
-                                        .width(42.dp),
-                                    verticalArrangement = Arrangement.SpaceBetween,
-                                    horizontalAlignment = Alignment.CenterHorizontally
-                                ) {
-                                    Image(painterResource(R.drawable.settingsgreen), contentDescription = "", Modifier.size(32.dp))
-                                    Text(text = "Settings", fontSize = 11.sp, color = Color(96, 211, 148))
-                                }
-                            }
-                        }
-                    }
-                }
-                
-                 */
             }
         }
     }

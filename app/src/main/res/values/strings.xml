@@ -4,4 +4,12 @@
     <string name="title_activity_calendar">CalendarActivity</string>
     <string name="title_activity_settings">settingsActivity</string>
     <string name="title_activity_user_login">userLogin</string>
+    <string name="title_activity_edio">Edio</string>
+    <string name="title_activity_edit_task">EditTaskActivity</string>
+    <string name="title_activity_add_task">AddTaskActivity</string>
+    <string name="title_activity_add_alarm">AddAlarmActivity</string>
+    <string name="title_activity_edit_alarm">EditAlarm</string>
+    <string name="title_activity_profile">ProfileActivity</string>
+    <string name="title_activity_Г">Г</string>
+    <string name="title_activity_user_logins">UserLogins</string>
 </resources>

@@ -13,10 +13,13 @@
         android:theme="@style/Theme.FirstAppCompose"
         tools:targetApi="31">
         <activity
-            android:name=".userLogin"
+            android:name=".UserLogins"
             android:exported="true"
-            android:label="@string/title_activity_user_login"
-            android:theme="@style/Theme.FirstAppCompose" >
+            android:label="@string/title_activity_user_logins"
+            android:theme="@style/Theme.FirstAppCompose">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,16 +27,70 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".ProfileActivity"
+            android:exported="false"
+            android:label="@string/title_activity_profile"
+            android:theme="@style/Theme.FirstAppCompose">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".EditAlarm"
+            android:exported="false"
+            android:label="@string/title_activity_edit_alarm"
+            android:theme="@style/Theme.FirstAppCompose">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".AddAlarmActivity"
+            android:exported="false"
+            android:label="@string/title_activity_add_alarm"
+            android:theme="@style/Theme.FirstAppCompose">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".AddTaskActivity"
+            android:exported="false"
+            android:label="@string/title_activity_add_task"
+            android:theme="@style/Theme.FirstAppCompose">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".EditTaskActivity"
+            android:exported="false"
+            android:label="@string/title_activity_edit_task"
+            android:theme="@style/Theme.FirstAppCompose">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".userLogin"
+            android:exported="false"
+            android:label="@string/title_activity_user_login"
+            android:theme="@style/Theme.FirstAppCompose" />
+        <activity
             android:name=".settingsActivity"
             android:exported="false"
             android:label="@string/title_activity_settings"
-            android:theme="@style/Theme.FirstAppCompose">
-        </activity>
+            android:theme="@style/Theme.FirstAppCompose" />
         <activity
             android:name=".CalendarActivity"
             android:exported="false"
             android:label="@string/title_activity_calendar"
-            android:theme="@style/Theme.FirstAppCompose"/>
+            android:theme="@style/Theme.FirstAppCompose" />
         <activity
             android:name=".AlarmActivity"
             android:exported="false"

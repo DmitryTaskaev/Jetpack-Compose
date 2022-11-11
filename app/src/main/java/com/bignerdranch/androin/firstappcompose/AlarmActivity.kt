@@ -1,11 +1,13 @@
 package com.bignerdranch.androin.firstappcompose
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Switch
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -50,7 +52,13 @@ class AlarmActivity : ComponentActivity() {
                     ) {
                         Row(
                             modifier = Modifier
-                                .fillMaxWidth(1f),
+                                .fillMaxWidth(1f)
+                                .clickable(
+                                    onClick = {
+                                        val int = Intent(this@AlarmActivity, EditAlarm::class.java)
+                                        startActivity(int)
+                                    }
+                                ),
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.SpaceBetween
                         ) {
@@ -64,7 +72,13 @@ class AlarmActivity : ComponentActivity() {
                         }
                         Row(
                             modifier = Modifier
-                                .fillMaxWidth(1f),
+                                .fillMaxWidth(1f)
+                                .clickable(
+                                    onClick = {
+                                        val int = Intent(this@AlarmActivity, EditAlarm::class.java)
+                                        startActivity(int)
+                                    }
+                                ),
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.SpaceBetween
                         ) {
@@ -72,7 +86,13 @@ class AlarmActivity : ComponentActivity() {
                             val checkedState = remember { mutableStateOf(true) }
                             Switch(
                                 checked = checkedState.value,
-                                onCheckedChange = { checkedState.value = it }
+                                onCheckedChange = { checkedState.value = it },
+                                colors = SwitchDefaults.colors(
+                                    checkedThumbColor = Color.White,
+                                    checkedTrackColor = Color(),
+                                    uncheckedThumbColor = Color(),
+                                    uncheckedTrackColor = Color()
+                                )
                             )
                         }
                     }
@@ -93,7 +113,11 @@ class AlarmActivity : ComponentActivity() {
                             .height(48.dp),
                         shape = RoundedCornerShape(13.dp),
                         colors = ButtonDefaults.buttonColors(backgroundColor = Color(	170, 246, 131)) ,
-                        onClick = { }) {
+                        onClick = {
+                            val int = Intent(this@AlarmActivity, AddAlarmActivity::class.java)
+                            startActivity(int)
+
+                        }) {
                         Text(text = "Добавить будильник", color = Color.White, fontSize = 17.sp)
                     }
                     CreateNavigation(value = 2)
