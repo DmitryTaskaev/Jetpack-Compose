@@ -66,8 +66,15 @@ class AlarmActivity : ComponentActivity() {
                             val checkedState = remember { mutableStateOf(true) }
                             Switch(
                                 checked = checkedState.value,
-                                modifier = Modifier,
-                                onCheckedChange = { checkedState.value = it }
+                                onCheckedChange = { checkedState.value = it },
+                                Modifier.background(Color(0xFFAAF683), shape = RoundedCornerShape(50)).size(60.dp, 35.dp),
+
+                                colors = SwitchDefaults.colors(
+                                    checkedThumbColor = Color.White,
+                                    checkedTrackColor = Color(0xFFAAF683),
+                                    uncheckedThumbColor = Color.White,
+                                    uncheckedTrackColor = Color(0xFFAAF683)
+                                )
                             )
                         }
                         Row(
@@ -87,11 +94,13 @@ class AlarmActivity : ComponentActivity() {
                             Switch(
                                 checked = checkedState.value,
                                 onCheckedChange = { checkedState.value = it },
+                                Modifier.background(Color(0xFFAAF683), shape = RoundedCornerShape(50)).size(60.dp, 35.dp),
+
                                 colors = SwitchDefaults.colors(
                                     checkedThumbColor = Color.White,
-                                    checkedTrackColor = Color(),
-                                    uncheckedThumbColor = Color(),
-                                    uncheckedTrackColor = Color()
+                                    checkedTrackColor = Color(0xFFAAF683),
+                                    uncheckedThumbColor = Color.White,
+                                    uncheckedTrackColor = Color(0xFFAAF683)
                                 )
                             )
                         }

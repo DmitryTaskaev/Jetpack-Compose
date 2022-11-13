@@ -44,11 +44,15 @@ class CalendarActivity : ComponentActivity() {
                 ) {
                     AndroidView({ CalendarView(it) },
                         modifier = Modifier.wrapContentWidth(),
+
                         update = { views ->
+
                             views.setOnDateChangeListener { calendarView, i, i2, i3 ->
 
                             }
-                        } )
+                        }
+
+                    )
                 }
                 //Bottom
 

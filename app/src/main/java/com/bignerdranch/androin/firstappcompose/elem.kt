@@ -3,6 +3,7 @@ package com.bignerdranch.androin.firstappcompose
 import android.app.Activity
 import android.content.Intent
 import android.util.Log
+import android.widget.CalendarView
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.OnBackPressedDispatcher
@@ -19,14 +20,44 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat.startActivity
 
 
-
+@Composable
+public fun BackHandler(enabled: Boolean = true, onBack: () -> Unit) {
+    // Safely update the current `onBack` lambda when a new one is provided
+    val currentOnBack by rememberUpdatedState(onBack)
+    // Remember in Composition a back callback that calls the `onBack` lambda
+    val backCallback = remember {
+        object : OnBackPressedCallback(enabled) {
+            override fun handleOnBackPressed() {
+                currentOnBack()
+            }
+        }
+    }
+    // On every successful composition, update the callback with the `enabled` value
+    SideEffect {
+        backCallback.isEnabled = enabled
+    }
+    val backDispatcher = checkNotNull(LocalOnBackPressedDispatcherOwner.current) {
+        "No OnBackPressedDispatcherOwner was provided via LocalOnBackPressedDispatcherOwner"
+    }.onBackPressedDispatcher
+    val lifecycleOwner = LocalLifecycleOwner.current
+    DisposableEffect(lifecycleOwner, backDispatcher) {
+        // Add callback to the backDispatcher
+        backDispatcher.addCallback(lifecycleOwner, backCallback)
+        // When the effect leaves the Composition, remove the callback
+        onDispose {
+            backCallback.remove()
+        }
+    }
+}
 @Composable
 fun CreateHeaderButtonProfile(header: String){
     val context = LocalContext.current
@@ -66,7 +97,9 @@ fun CreateHeaderButtonBack(header: String) {
             Modifier
                 .size(55.dp)
                 .clickable(
+                    
                     onClick = {
+
                         val ints = Intent(context, MainActivity::class.java)
                         startActivity(context, ints, null)
                     }))
@@ -264,4 +297,5 @@ fun CreateDayOnEditAlarm(name: String){
         Text(name, fontSize = 16.sp, color = Color.White, modifier = Modifier.offset(4.dp,0.dp))
     }
 }
+
 
